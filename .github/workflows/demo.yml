@@ -16,10 +16,9 @@ jobs:
           node -v
 
       - name: "Python 3.11 installieren"
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y python3.11
-          python3.11 --version
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
 
       - name: "Eigene Nachricht"
         run: echo "Workflow läuft erfolgreich"
