@@ -1,0 +1,25 @@
+name: Demo Workflow # Name des Workflows
+
+on: [push] # Startet bei jedem Push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # Ubuntu-Runner
+
+    steps:
+      - uses: actions/checkout@v4 # Code auschecken
+
+      - name: "Node.js 18 installieren"
+        run: |
+          curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+          sudo apt-get install -y nodejs
+          node -v
+
+      - name: "Python 3.11 installieren"
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3.11
+          python3.11 --version
+
+      - name: "Eigene Nachricht"
+        run: echo "Workflow läuft erfolgreich"
